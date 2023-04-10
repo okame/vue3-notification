@@ -28,6 +28,7 @@
           <!-- Default slot template -->
           <div
             :class="notifyClass(item)"
+            :style="notifyBodyStyle(item)"
             @click="destroyIfNecessary(item)"
           >
             <div
@@ -330,21 +331,16 @@ export default defineComponent({
     },
 
     notifyWrapperStyle(item: NotificationItemExtended) {
-      if (this.isVA) {
-        return undefined;
-      }
+      return this.isVA
+        ? undefined
+        : { transition: `all ${item.speed}ms` };
+    },
 
-      const style = { transition: `all ${item.speed}ms` } as Partial<CSSStyleDeclaration>;
-
-      if (item.color !== undefined) {
-        style.color = item.color;
-      }
-
-      if (item.color !== undefined) {
-        style.backgroundColor = item.backgroundColor;
-      }
-
-      return style;
+    notifyBodyStyle(item: NotificationItemExtended) {
+      return {
+        color: item.color,
+        backgroundColor: item.backgroundColor,
+      };
     },
 
     destroy(item: NotificationItemExtended): void {
