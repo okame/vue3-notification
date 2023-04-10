@@ -261,7 +261,7 @@ export default defineComponent({
         ? event.ignoreDuplicates
         : this.ignoreDuplicates;
 
-      const { title, text, type, data, id } = event;
+      const { title, text, type, data, id, color, backgroundColor } = event;
 
       const item: NotificationItemExtended = {
         id: id || Id(),
@@ -272,6 +272,8 @@ export default defineComponent({
         speed,
         length: duration + 2 * speed,
         data,
+        color,
+        backgroundColor,
       };
 
       if (duration >= 0) {
@@ -328,9 +330,21 @@ export default defineComponent({
     },
 
     notifyWrapperStyle(item: NotificationItemExtended) {
-      return this.isVA
-        ? undefined
-        : { transition: `all ${item.speed}ms` };
+      if (this.isVA) {
+        return undefined;
+      }
+
+      const style = { transition: `all ${item.speed}ms` } as Partial<CSSStyleDeclaration>;
+
+      if (item.color !== undefined) {
+        style.color = item.color;
+      }
+
+      if (item.color !== undefined) {
+        style.backgroundColor = item.backgroundColor;
+      }
+
+      return style;
     },
 
     destroy(item: NotificationItemExtended): void {
