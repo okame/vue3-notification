@@ -72,6 +72,13 @@
       width="100%"
     />
 
+    <!-- Custom color sample -->
+    <notifications
+      group="custom-color"
+      position="bottom left"
+      :speed="5000"
+    />
+
     <div class="content">
       <p>
         CSS animation:
@@ -144,6 +151,10 @@
         <button @click="show('full-width')">
           show bottom (full width)
         </button>
+        <p>Custom color:</p>
+        <button @click="show('custom-color', '', 'red', 'yellow')">
+          red and yellow
+        </button>
       </div>
     </div>
   </div>
@@ -171,7 +182,7 @@ export default defineComponent({
     };
   },
   methods: {
-    show(group, type = '') {
+    show(group, type = '', color = '', backgroundColor = '') {
       const text = `
         This is notification text!
         <br>
@@ -186,6 +197,8 @@ export default defineComponent({
         data: {
           randomNumber: Math.random(),
         },
+        color,
+        backgroundColor,
       });
     },
 
