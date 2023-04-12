@@ -1,4 +1,4 @@
-import { defineComponent as g, openBlock as a, createBlock as $, TransitionGroup as k, withCtx as T, renderSlot as v, createElementBlock as p, normalizeStyle as m, resolveDynamicComponent as B, Fragment as H, renderList as M, normalizeClass as D, createElementVNode as C, createCommentVNode as R } from "vue";
+import { defineComponent as $, openBlock as a, createBlock as T, TransitionGroup as S, withCtx as v, renderSlot as A, createElementBlock as f, normalizeStyle as h, resolveDynamicComponent as B, Fragment as H, renderList as M, normalizeClass as D, createElementVNode as C, createCommentVNode as R } from "vue";
 function V(t) {
   return { all: t = t || /* @__PURE__ */ new Map(), on: function(e, i) {
     var o = t.get(e);
@@ -15,7 +15,7 @@ function V(t) {
     });
   } };
 }
-const d = V(), w = /* @__PURE__ */ new Map(), N = {
+const c = V(), k = /* @__PURE__ */ new Map(), N = {
   x: ["left", "center", "right"],
   y: ["top", "bottom"]
 }, W = ((t) => () => t++)(0), Y = (t) => typeof t != "string" ? [] : t.split(/\s+/gi).filter((e) => e), j = (t) => {
@@ -36,7 +36,7 @@ class G {
     this.start = Date.now(), clearTimeout(this.notifyItem.timer), this.notifyItem.timer = setTimeout(this.callback, this.remaining);
   }
 }
-const h = {
+const y = {
   position: ["top", "right"],
   cssAnimation: "vn-fade",
   velocityAnimation: {
@@ -49,7 +49,7 @@ const h = {
       opacity: [0, 1]
     }
   }
-}, z = g({
+}, z = $({
   name: "velocity-group",
   emits: ["after-leave", "leave", "enter"],
   methods: {
@@ -69,46 +69,46 @@ const h = {
     i[o] = s;
   return i;
 };
-function F(t, e, i, o, s, c) {
-  return a(), $(k, {
+function F(t, e, i, o, s, u) {
+  return a(), T(S, {
     tag: "span",
     css: !1,
     onEnter: t.enter,
     onLeave: t.leave,
     onAfterLeave: t.afterLeave
   }, {
-    default: T(() => [
-      v(t.$slots, "default")
+    default: v(() => [
+      A(t.$slots, "default")
     ]),
     _: 3
   }, 8, ["onEnter", "onLeave", "onAfterLeave"]);
 }
-const P = /* @__PURE__ */ b(z, [["render", F]]), q = g({
+const P = /* @__PURE__ */ b(z, [["render", F]]), q = $({
   name: "css-group",
   inheritAttrs: !1,
   props: {
     name: { type: String, required: !0 }
   }
 });
-function J(t, e, i, o, s, c) {
-  return a(), $(k, {
+function J(t, e, i, o, s, u) {
+  return a(), T(S, {
     tag: "span",
     name: t.name
   }, {
-    default: T(() => [
-      v(t.$slots, "default")
+    default: v(() => [
+      A(t.$slots, "default")
     ]),
     _: 3
   }, 8, ["name"]);
 }
-const K = /* @__PURE__ */ b(q, [["render", J]]), y = "[-+]?[0-9]*.?[0-9]+", S = [
+const K = /* @__PURE__ */ b(q, [["render", J]]), g = "[-+]?[0-9]*.?[0-9]+", I = [
   {
     name: "px",
-    regexp: new RegExp(`^${y}px$`)
+    regexp: new RegExp(`^${g}px$`)
   },
   {
     name: "%",
-    regexp: new RegExp(`^${y}%$`)
+    regexp: new RegExp(`^${g}%$`)
   },
   /**
    * Fallback option
@@ -116,7 +116,7 @@ const K = /* @__PURE__ */ b(q, [["render", J]]), y = "[-+]?[0-9]*.?[0-9]+", S = 
    */
   {
     name: "px",
-    regexp: new RegExp(`^${y}$`)
+    regexp: new RegExp(`^${g}$`)
   }
 ], Q = (t) => {
   if (t === "auto")
@@ -124,8 +124,8 @@ const K = /* @__PURE__ */ b(q, [["render", J]]), y = "[-+]?[0-9]*.?[0-9]+", S = 
       type: t,
       value: 0
     };
-  for (let e = 0; e < S.length; e++) {
-    const i = S[e];
+  for (let e = 0; e < I.length; e++) {
+    const i = I[e];
     if (i.regexp.test(t))
       return {
         type: i.name,
@@ -145,10 +145,10 @@ const K = /* @__PURE__ */ b(q, [["render", J]]), y = "[-+]?[0-9]*.?[0-9]+", S = 
     default:
       return { type: "", value: t };
   }
-}, f = {
+}, d = {
   IDLE: 0,
   DESTROYED: 2
-}, X = g({
+}, X = $({
   name: "notifications",
   components: {
     VelocityGroup: P,
@@ -169,7 +169,7 @@ const K = /* @__PURE__ */ b(q, [["render", J]]), y = "[-+]?[0-9]*.?[0-9]+", S = 
     },
     position: {
       type: [String, Array],
-      default: h.position
+      default: y.position
     },
     classes: {
       type: String,
@@ -181,11 +181,11 @@ const K = /* @__PURE__ */ b(q, [["render", J]]), y = "[-+]?[0-9]*.?[0-9]+", S = 
     },
     animation: {
       type: Object,
-      default: h.velocityAnimation
+      default: y.velocityAnimation
     },
     animationName: {
       type: String,
-      default: h.cssAnimation
+      default: y.cssAnimation
     },
     speed: {
       type: Number,
@@ -225,7 +225,7 @@ const K = /* @__PURE__ */ b(q, [["render", J]]), y = "[-+]?[0-9]*.?[0-9]+", S = 
   data() {
     return {
       list: [],
-      velocity: w.get("velocity"),
+      velocity: k.get("velocity"),
       timerControl: null
     };
   },
@@ -246,14 +246,14 @@ const K = /* @__PURE__ */ b(q, [["render", J]]), y = "[-+]?[0-9]*.?[0-9]+", S = 
       return e && (s[e] = "0px"), t && (t === "center" ? s.left = `calc(50% - ${+i / 2}${o})` : s[t] = "0px"), s;
     },
     active() {
-      return this.list.filter((t) => t.state !== f.DESTROYED);
+      return this.list.filter((t) => t.state !== d.DESTROYED);
     },
     botToTop() {
       return this.styles.hasOwnProperty("bottom");
     }
   },
   mounted() {
-    d.on("add", this.addItem), d.on("close", this.closeItem);
+    c.on("add", this.addItem), c.on("close", this.closeItem), c.on("closeAll", this.closeItemAll);
   },
   methods: {
     destroyIfNecessary(t) {
@@ -274,26 +274,29 @@ const K = /* @__PURE__ */ b(q, [["render", J]]), y = "[-+]?[0-9]*.?[0-9]+", S = 
         this.destroyAll();
         return;
       }
-      const e = typeof t.duration == "number" ? t.duration : this.duration, i = typeof t.speed == "number" ? t.speed : this.speed, o = typeof t.ignoreDuplicates == "boolean" ? t.ignoreDuplicates : this.ignoreDuplicates, { title: s, text: c, type: n, data: l, id: L, color: I, backgroundColor: O } = t, r = {
-        id: L || W(),
+      const e = typeof t.duration == "number" ? t.duration : this.duration, i = typeof t.speed == "number" ? t.speed : this.speed, o = typeof t.ignoreDuplicates == "boolean" ? t.ignoreDuplicates : this.ignoreDuplicates, { title: s, text: u, type: n, data: l, id: w, color: L, backgroundColor: O } = t, r = {
+        id: w || W(),
         title: s,
-        text: c,
+        text: u,
         type: n,
-        state: f.IDLE,
+        state: d.IDLE,
         speed: i,
         length: e + 2 * i,
         data: l,
-        color: I,
+        color: L,
         backgroundColor: O
       };
       e >= 0 && (this.timerControl = new G(() => this.destroy(r), r.length, r));
       const x = this.reverse ? !this.botToTop : this.botToTop;
-      let u = -1;
+      let p = -1;
       const _ = this.active.some((E) => E.title === t.title && E.text === t.text);
-      (!o || !_) && (x ? (this.list.push(r), this.$emit("start", r), this.active.length > this.max && (u = 0)) : (this.list.unshift(r), this.$emit("start", r), this.active.length > this.max && (u = this.active.length - 1)), u !== -1 && this.destroy(this.active[u]));
+      (!o || !_) && (x ? (this.list.push(r), this.$emit("start", r), this.active.length > this.max && (p = 0)) : (this.list.unshift(r), this.$emit("start", r), this.active.length > this.max && (p = this.active.length - 1)), p !== -1 && this.destroy(this.active[p]));
     },
     closeItem(t) {
       this.destroyById(t);
+    },
+    closeItemAll() {
+      this.list.forEach((t) => this.destroy(t));
     },
     notifyClass(t) {
       return [
@@ -312,7 +315,7 @@ const K = /* @__PURE__ */ b(q, [["render", J]]), y = "[-+]?[0-9]*.?[0-9]+", S = 
       };
     },
     destroy(t) {
-      clearTimeout(t.timer), t.state = f.DESTROYED, this.clean(), this.$emit("destroy", t);
+      clearTimeout(t.timer), t.state = d.DESTROYED, this.clean(), this.$emit("destroy", t);
     },
     destroyById(t) {
       const e = this.list.find((i) => i.id === t);
@@ -345,42 +348,42 @@ const K = /* @__PURE__ */ b(q, [["render", J]]), y = "[-+]?[0-9]*.?[0-9]+", S = 
       });
     },
     clean() {
-      this.list = this.list.filter((t) => t.state !== f.DESTROYED);
+      this.list = this.list.filter((t) => t.state !== d.DESTROYED);
     }
   }
 });
 const Z = ["data-id"], tt = ["onClick"], et = ["innerHTML"], it = ["innerHTML"];
-function ot(t, e, i, o, s, c) {
-  return a(), p("div", {
+function ot(t, e, i, o, s, u) {
+  return a(), f("div", {
     class: "vue-notification-group",
-    style: m(t.styles)
+    style: h(t.styles)
   }, [
-    (a(), $(B(t.componentName), {
+    (a(), T(B(t.componentName), {
       name: t.animationName,
       onEnter: t.enter,
       onLeave: t.leave,
       onAfterLeave: t.clean
     }, {
-      default: T(() => [
-        (a(!0), p(H, null, M(t.active, (n) => (a(), p("div", {
+      default: v(() => [
+        (a(!0), f(H, null, M(t.active, (n) => (a(), f("div", {
           key: n.id,
           class: "vue-notification-wrapper",
-          style: m(t.notifyWrapperStyle(n)),
+          style: h(t.notifyWrapperStyle(n)),
           "data-id": n.id,
           onMouseenter: e[0] || (e[0] = (...l) => t.pauseTimeout && t.pauseTimeout(...l)),
           onMouseleave: e[1] || (e[1] = (...l) => t.resumeTimeout && t.resumeTimeout(...l))
         }, [
-          v(t.$slots, "body", {
+          A(t.$slots, "body", {
             class: D([t.classes, n.type]),
             item: n,
             close: () => t.destroy(n)
           }, () => [
             C("div", {
               class: D(t.notifyClass(n)),
-              style: m(t.notifyBodyStyle(n)),
+              style: h(t.notifyBodyStyle(n)),
               onClick: (l) => t.destroyIfNecessary(n)
             }, [
-              n.title ? (a(), p("div", {
+              n.title ? (a(), f("div", {
                 key: 0,
                 class: "notification-title",
                 innerHTML: n.title
@@ -397,24 +400,27 @@ function ot(t, e, i, o, s, c) {
     }, 40, ["name", "onEnter", "onLeave", "onAfterLeave"]))
   ], 4);
 }
-const st = /* @__PURE__ */ b(X, [["render", ot]]), A = (t) => {
-  typeof t == "string" && (t = { title: "", text: t }), typeof t == "object" && d.emit("add", t);
+const st = /* @__PURE__ */ b(X, [["render", ot]]), m = (t) => {
+  typeof t == "string" && (t = { title: "", text: t }), typeof t == "object" && c.emit("add", t);
 };
-A.close = (t) => {
-  d.emit("close", t);
+m.close = (t) => {
+  c.emit("close", t);
 };
-const lt = () => ({ notify: A });
+m.closeAll = () => {
+  c.emit("closeAll");
+};
+const lt = () => ({ notify: m });
 function nt(t, e = {}) {
-  Object.entries(e).forEach((o) => w.set(...o));
+  Object.entries(e).forEach((o) => k.set(...o));
   const i = e.name || "notify";
-  t.config.globalProperties["$" + i] = A, t.component(e.componentName || "Notifications", st);
+  t.config.globalProperties["$" + i] = m, t.component(e.componentName || "Notifications", st);
 }
 const ct = {
   install: nt
 };
 export {
   ct as default,
-  A as notify,
+  m as notify,
   lt as useNotification
 };
 (function(){var o;"use strict";try{if(typeof document!="undefined"){var e=document.createElement("style");e.nonce=(o=document.head.querySelector("meta[property=csp-nonce]"))==null?void 0:o.content,e.appendChild(document.createTextNode(".vue-notification-group{display:block;position:fixed;z-index:5000}.vue-notification-wrapper{display:block;overflow:hidden;width:100%;margin:0;padding:0}.notification-title{font-weight:600}.vue-notification-template{display:block;box-sizing:border-box;background:white;text-align:left}.vue-notification{display:block;box-sizing:border-box;text-align:left;font-size:12px;padding:10px;margin:0 5px 5px;color:#fff;background:#44A4FC;border-left:5px solid #187FE7}.vue-notification.warn{background:#ffb648;border-left-color:#f48a06}.vue-notification.error{background:#E54D42;border-left-color:#b82e24}.vue-notification.success{background:#68CD86;border-left-color:#42a85f}.vn-fade-enter-active,.vn-fade-leave-active,.vn-fade-move{transition:all .5s}.vn-fade-enter-from,.vn-fade-leave-to{opacity:0}")),document.head.appendChild(e)}}catch(i){console.error("vite-plugin-css-injected-by-js",i)}})();
