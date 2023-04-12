@@ -15,6 +15,10 @@ notify.close = (id: unknown): void => {
   emitter.emit('close', id);
 };
 
+notify.closeAll = (): void => {
+  emitter.emit('closeAll');
+};
+
 export const useNotification = () => {
   return { notify };
 };

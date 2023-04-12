@@ -219,6 +219,7 @@ export default defineComponent({
   mounted() {
     emitter.on('add', this.addItem);
     emitter.on('close', this.closeItem);
+    emitter.on('closeAll', this.closeItemAll);
   },
   methods: {
     destroyIfNecessary(item: NotificationItemExtended) {
@@ -320,6 +321,10 @@ export default defineComponent({
 
     closeItem(id: unknown) {
       this.destroyById(id);
+    },
+
+    closeItemAll() {
+      this.list.forEach(item => this.destroy(item));
     },
 
     notifyClass(item: NotificationItemExtended): string[] {
